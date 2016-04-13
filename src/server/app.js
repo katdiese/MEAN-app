@@ -5,6 +5,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+// *** config *** //
+var config = require('../_config');
 
 
 // *** routes *** //
@@ -14,11 +18,24 @@ var routes = require('./routes/index.js');
 // *** express instance *** //
 var app = express();
 
+// *** mongo connection *** /
+var environment = process.env.NODE_ENV || 'development'
+
+var mongoURI = config.mongoURI[environment];
+
+mongoose.connect(mongoURI, function(err, res) {
+  if (err) {
+    console.log('Error connecting to the database. ' + err);
+  } else {
+    console.log('Connected to Database: ' + config.mongoURI[environment]);
+  }
+});
+
 
 // *** view engine *** //
 // var swig = new swig.Swig();
-app.engine('html', swig.renderFile);
-app.set('view engine', 'html');
+// app.engine('html', swig.renderFile);
+// app.set('view engine', 'html');
 
 
 // *** static directory *** //
