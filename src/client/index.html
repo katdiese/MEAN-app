@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app='first-MEAN-app'>
+  <head>
+    <meta charset="utf-8">
+    <title>Untitled</title>
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+  </head>
+  <body ng-cloak ng-controller="addStudentController">
+    <!-- sample angular code -->
+    <div class="container">
+      <form class="form" ng-hide="editable" ng-submit="addStudent()">
+        <h1>Add New Student</h1>
+        <label for="firstName">First Name</label>
+        <input ng-model="student.firstName" class="form-control" id="firstName" type="text">
+        <label for="lastName">Last Name</label>
+        <input ng-model="student.lastName" class="form-control" id="lastName" type="text">
+        <div class="form-group">
+        <label for="year">Year</label>
+        <select class="form-control" ng-model="student.year">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+        </div>
+        <button class="btn btn-success" type="submit">Submit</button>
+      </form>
+      <form class="form" ng-show="editable" ng-submit="editStudent()">
+        <h1>Edit Student</h1>
+        <label for="firstName">First Name</label>
+        <input ng-model="studentEdit.firstName" class="form-control" id="firstName" type="text">
+        <label for="lastName">Last Name</label>
+        <input ng-model="studentEdit.lastName" class="form-control" id="lastName" type="text">
+        <div class="form-group">
+        <label for="year">Year</label>
+        <select class="form-control" ng-model="studentEdit.year">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+        </div>
+        <button class="btn btn-success" type="submit">Update Student Info</button>
+      </form>
+      <table class="table table-striped">
+        <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Year</th>
+        <th>Update?</th>
+        </tr>
+        <tr ng-repeat="student in students">
+          <td ng-model="student.firstName" class="first col-md-3">{{ student.firstName }}</td>
+          <td class="last col-md-3">{{ student.lastName }}</td>
+          <td class="year col-md-3">{{ student.year }}</td>
+          <td>
+          <button class="btn btn-danger" ng-click="delete(student._id)">Delete</button>
+          <button ng-click="makeEdits(student)" class="btn btn-default">Edit</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.10/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+    <script type="text/javascript" src="js/services.js"></script>
+  </body>
+</html>
