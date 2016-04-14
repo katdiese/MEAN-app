@@ -1,13 +1,19 @@
 language: node_js
-
 node_js:
-  - "5.3"
-  - "4.1"
-  - "4.0"
-  - '0.12'
-  - '0.11'
-
+- '5.3'
+- '4.1'
+- '4.0'
+- '0.12'
+- '0.11'
 services: mongodb
-
 before_script:
-  - npm install -g mocha
+- npm install -g mocha
+deploy:
+  provider: heroku
+  api_key:
+    secure: vF4NCVeqqx/H/mfiMmQwJOv0pVMPmjYv3LcTPZ1WibDdgup26Wudos2/pkEjDGRgJn0kXqBN5JgSnaDV0gUz/hppyTwGAvLpoqSTmO61PXmFwRp6oDpvrBlNKYzC7su7slIME1nV9OHdXpqBtYsMxPLw59q9ua+TDc4H8rSEA8jZKMmMfWDCssH4439zUFS4C4roHJpRIKrT5uDpBJ06HWm0NmyOtcVaVo5U20sdHrr5vp9GjbE/mvh5m8Esh3Ue5qzbN9UIXThBEMTYa9sLszcMLdDDQo9Qi2mLBtbqFRTowyR1mJSDACAPoEOUNUKXMb+eFQqmupgC6PUWGRBu2B4Khvr4SDVY6x3T/RpSqyXha1/DXCF91AZwXI1HDizTRQPZYqVBJiX25cgW9zeN1eVnh7+SOiaa7fhRYuQdSlbb5KcnwPHfN1Tfe894d43SLAua2kkkH73T2SHmoZQ/j/GlzXb5gXAVoCmbF4LeCpumDOQJlgNLM1Bbu/1oIchJc67yp4VXzb8NyGcuNacTxXyclls8oSu5AjDjjlteZAd0IGW6aTNY994hTaL2jcUH3vtEzkijmFNlHz0BR39L1Ktm0OQ9q0IEDn2jKo5Av4N27q+m72Nim329+2XvMRyQHz+eFSz5XbM7Royq5bBWSqDX/iFYGY+BoUn+n9mpBj8=
+  app: deez-mean-app
+  on:
+    branch: master
+    node: '5.3'
+    repo: katdiese/MEAN-app
