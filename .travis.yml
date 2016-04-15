@@ -8,6 +8,8 @@ node_js:
 services: mongodb
 before_script:
 - npm install -g mocha
+- npm install -g bluebird
+- npm install -g faker
 deploy:
   provider: heroku
   api_key:
